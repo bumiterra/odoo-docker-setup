@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Data demo untuk Project -->
+        <record id="demo_project_1" model="project.project">
+            <field name="name">Pembangunan Jembatan Desa Sukamaju</field>
+            <field name="start_date" eval="(DateTime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.today() + timedelta(days=90)).strftime('%Y-%m-%d')"/>
+            <field name="description">Proyek pembangunan jembatan penghubung di Desa Sukamaju</field>
+        </record>
+        
+        <record id="demo_project_2" model="project.project">
+            <field name="name">Renovasi Gedung Kantor PT Maju Bersama</field>
+            <field name="start_date" eval="(DateTime.today() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="end_date" eval="(DateTime.today() + timedelta(days=45)).strftime('%Y-%m-%d')"/>
+            <field name="description">Proyek renovasi gedung kantor utama PT Maju Bersama</field>
+        </record>
+        
+        <!-- Data demo untuk Project Item -->
+        <record id="demo_project_item_1" model="laudza.project.item">
+            <field name="name">Pengecoran Pondasi</field>
+            <field name="project_id" ref="demo_project_1"/>
+            <field name="date_input" eval="(DateTime.today() - timedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="description">Pekerjaan pengecoran pondasi untuk jembatan</field>
+        </record>
+        
+        <record id="demo_project_item_2" model="laudza.project.item">
+            <field name="name">Pemasangan Struktur Baja</field>
+            <field name="project_id" ref="demo_project_1"/>
+            <field name="date_input" eval="(DateTime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="description">Pekerjaan pemasangan struktur baja pada jembatan</field>
+        </record>
+        
+        <record id="demo_project_item_3" model="laudza.project.item">
+            <field name="name">Pembongkaran Dinding</field>
+            <field name="project_id" ref="demo_project_2"/>
+            <field name="date_input" eval="(DateTime.today() - timedelta(days=12)).strftime('%Y-%m-%d')"/>
+            <field name="description">Pekerjaan pembongkaran dinding internal gedung</field>
+        </record>
+        
+        <!-- Data demo untuk Project Constraint -->
+        <record id="demo_project_constraint_1" model="laudza.project.constraint">
+            <field name="name">Keterlambatan Material Baja</field>
+            <field name="project_id" ref="demo_project_1"/>
+            <field name="constraint_date" eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="description">Terjadi keterlambatan pengiriman material baja dari supplier</field>
+            <field name="severity">high</field>
+            <field name="state">open</field>
+        </record>
+        
+        <record id="demo_project_constraint_2" model="laudza.project.constraint">
+            <field name="name">Temuan Struktur Bangunan Rapuh</field>
+            <field name="project_id" ref="demo_project_2"/>
+            <field name="constraint_date" eval="(DateTime.today() - timedelta(days=8)).strftime('%Y-%m-%d')"/>
+            <field name="description">Ditemukan struktur bangunan yang rapuh pada bagian timur gedung</field>
+            <field name="severity">critical</field>
+            <field name="state">in_progress</field>
+        </record>
+        
+        <!-- Data demo untuk Project Feedback -->
+        <record id="demo_project_feedback_1" model="laudza.project.feedback">
+            <field name="constraint_id" ref="demo_project_constraint_1"/>
+            <field name="date_feedback" eval="(DateTime.today() - timedelta(days=4)).strftime('%Y-%m-%d')"/>
+            <field name="content">Hubungi supplier alternatif untuk mempercepat pengadaan material baja</field>
+        </record>
+        
+        <record id="demo_project_feedback_2" model="laudza.project.feedback">
+            <field name="constraint_id" ref="demo_project_constraint_2"/>
+            <field name="date_feedback" eval="(DateTime.today() - timedelta(days=7)).strftime('%Y-%m-%d')"/>
+            <field name="content">Lakukan kajian struktural tambahan dan revisi rencana renovasi untuk memperkuat struktur</field>
+        </record>
+    </data>
+</odoo>

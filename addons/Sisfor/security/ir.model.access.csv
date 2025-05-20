@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_laudza_project_item,access.laudza.project.item,model_laudza_project_item,,1,1,1,1
+access_laudza_project_documentation,access.laudza.project.documentation,model_laudza_project_documentation,,1,1,1,1
+access_laudza_project_constraint,access.laudza.project.kendala,model_laudza_project_kendala,,1,1,1,1
+access_laudza_project_feedback,access.laudza.project.feedback,model_laudza_project_feedback,,1,1,1,1

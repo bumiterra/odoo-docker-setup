@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- FORM VIEW -->
+    <record id="view_laudza_project_item_form" model="ir.ui.view">
+        <field name="name">laudza.project.item.form</field>
+        <field name="model">laudza.project.item</field>
+        <field name="arch" type="xml">
+            <form string="Item Pekerjaan">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="o_form_label text-primary fw-bold"/>
+                        <h1>
+                            <field name="name" placeholder="Masukkan nama item..." class="text-xl"/>
+                        </h1>
+                    </div>
+
+                    <group col="2" class="mt-3 mb-2">
+                        <field name="project_id" options="{'no_create': True}" required="1"
+                            placeholder="Pilih proyek terkait"/>
+                        <field name="date_input" widget="date" class="o_datepicker"
+                            placeholder="Tanggal pekerjaan dimulai"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Deskripsi Item">
+                            <field name="description"
+                                placeholder="Deskripsikan detail item pekerjaan..."
+                                class="text-muted" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- TREE VIEW -->
+    <record id="view_laudza_project_item_tree" model="ir.ui.view">
+        <field name="name">laudza.project.item.tree</field>
+        <field name="model">laudza.project.item</field>
+        <field name="arch" type="xml">
+            <list default_order="date_input desc">
+                <field name="name" string="Nama Item"/>
+                <field name="project_id" string="Proyek"/>
+                <field name="date_input" string="Tanggal" widget="date"/>
+                <field name="description" string="Deskripsi" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- KANBAN VIEW -->
+    <record id="view_laudza_project_item_kanban" model="ir.ui.view">
+        <field name="name">laudza.project.item.kanban</field>
+        <field name="model">laudza.project.item</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" default_group_by="project_id">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="date_input"/>
+                <field name="description"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click shadow-sm rounded p-2">
+                            <div class="o_kanban_record_headings mb-1">
+                                <strong class="text-primary text-lg o_text_overflow">
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div class="row mb-1">
+                                    <div class="col-auto">
+                                        <i class="fa fa-calendar text-muted me-1"/>
+                                        <field name="date_input"/>
+                                    </div>
+                                    <div class="col text-end">
+                                        <span class="badge rounded-pill bg-primary text-white">
+                                            <field name="project_id"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="text-muted small o_text_overflow">
+                                    <field name="description"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ACTION VIEW -->
+    <record id="laudza_project_item_action" model="ir.actions.act_window">
+        <field name="name">Item Pekerjaan</field>
+        <field name="res_model">laudza.project.item</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tambahkan item pekerjaan baru untuk proyek Anda.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Actions -->
+    <record id="laudza_project_project_action" model="ir.actions.act_window">
+        <field name="name">Project</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="laudza_project_item_action" model="ir.actions.act_window">
+        <field name="name">Item Pekerjaan</field>
+        <field name="res_model">laudza.project.item</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="laudza_project_kendala_action" model="ir.actions.act_window">
+        <field name="name">Kendala</field>
+        <field name="res_model">laudza.project.kendala</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu Root -->
+    <menuitem id="laudza_project_root_menu"
+        name="Laudza Project"
+        web_icon="laudza_project,static/description/icon.png"
+        sequence="1"/>
+    
+    <!-- Project Menu -->
+    <menuitem id="laudza_project_menu"
+        name="Proyek"
+        parent="laudza_project_root_menu"
+        action="laudza_project_project_action"
+        sequence="10"/>
+    
+    <!-- Project Items -->
+    <menuitem id="laudza_project_item_menu"
+        name="Item Pekerjaan"
+        parent="laudza_project_root_menu"
+        action="laudza_project_item_action"
+        sequence="20"/>
+    
+    
+    <!-- Project Kendala -->
+    <menuitem id="laudza_project_kendala_menu"
+        name="Kendala"
+        parent="laudza_project_root_menu"
+        action="laudza_project_kendala_action"
+        sequence="40"/>
+</odoo>
